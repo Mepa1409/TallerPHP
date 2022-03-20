@@ -1,43 +1,14 @@
 <?php
-class Student{
-    private $code;
-    private $nombre;
-    private $deporte;
-    private $actividad;
+$code= $_POST['cod'];
+$nombre= $_POST['nom'];
+$deporte = $_POST['depor'];
+$actividad = $_POST['acti'];
 
-    function __construct( $code, $nombre,$deporte,$actividad){
-        $this->code = $code;
-        $this->nombre = $nombre;
-        $this->deporte = $deporte;
-        $this->actividad= $actividad;
+$array = array("code" => $code , "name" => $nombre , "sport" => $deporte , "activity" => $actividad );
+    if(file_exists('doc\info.json')){
+    $contenido = file_get_contents('doc\info.json');
+    $data =json_decode($contenido);
+    array_push($data,$array);
+    file_put_contents('doc\info.json',json_encode($data));
     }
-
-    public function getCode()
-    {
-        return $this->code;
-    }
-
-    public function setCode($code)
-    {
-        $this->code = $code;
-    }
-    public function getNombre()
-    {
-        return $this->nombre;
-    }
-
-    public function setNombre($nombre)
-    {
-        $this->nombre = $code;
-    }
-
-
-  
-}
-
-
-
-
-   
-
 ?>   
